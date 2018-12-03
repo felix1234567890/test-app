@@ -8,10 +8,9 @@ export default class Color extends Component {
   };
 
   componentDidMount() {
-    this.getRandomColorA();
-    setTimeout(() => this.getRandomColorB(), 100);
+    this.getRandomColor();
   }
-  getRandomColorA = () => {
+  getRandomColor = () => {
     const url = "http://www.colr.org/json/color/random";
     fetch(url)
       .then(res => res.json())
@@ -19,18 +18,27 @@ export default class Color extends Component {
         this.setState({
           randomColorA: data.colors[0].hex
         })
-      );
+      )
+      .then(() => {
+        fetch(url)
+          .then(res => res.json())
+          .then(data =>
+            this.setState({
+              randomColorB: data.colors[0].hex
+            })
+          );
+      });
   };
-  getRandomColorB = () => {
-    const url = "http://www.colr.org/json/color/random";
-    fetch(url)
-      .then(res => res.json())
-      .then(data =>
-        this.setState({
-          randomColorB: data.colors[0].hex
-        })
-      );
-  };
+  // getRandomColorB = () => {
+  //   const url = "http://www.colr.org/json/color/random";
+  //   fetch(url)
+  //     .then(res => res.json())
+  //     .then(data =>
+  //       this.setState({
+  //         randomColorB: data.colors[0].hex
+  //       })
+  //     );
+  // };
   changeColor = color => {
     if (this.state.boxColor === "#000") {
       this.setState({
@@ -46,6 +54,7 @@ export default class Color extends Component {
   render() {
     const colors = [this.state.randomColorA, this.state.randomColorB];
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    console.log(colors);
     console.log(this.state.boxColor);
     const { text } = this.props;
     return (
