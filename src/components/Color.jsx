@@ -47,6 +47,7 @@ export default class Color extends Component {
     const colors = [this.state.randomColorA, this.state.randomColorB];
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
     console.log(randomColor);
+    const { text } = this.props;
     return (
       <div>
         <div
@@ -54,9 +55,12 @@ export default class Color extends Component {
             height: 300,
             width: 300,
             backgroundColor: this.state.boxColor,
-            border: "2px solid #fff"
+            border: "2px solid #fff",
+            overflow: "hidden"
           }}
-        />
+        >
+          {text}
+        </div>
         <button onClick={() => this.changeColor(randomColor)}>
           Change color
         </button>
