@@ -65,7 +65,8 @@ export default class Color extends Component {
             width: 500,
             backgroundColor: this.state.boxColor,
             border: "2px solid #fff",
-            overflow: "hidden"
+            overflow: "hidden",
+            wordWrap: "break-word"
           }}
         >
           {text}
