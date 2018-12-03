@@ -34,7 +34,7 @@ export default class Color extends Component {
   changeColor = color => {
     if (this.state.boxColor === "#000") {
       this.setState({
-        boxColor: `"#${color}"`
+        boxColor: `#${color}`
       });
     } else {
       this.setState({
@@ -46,7 +46,7 @@ export default class Color extends Component {
   render() {
     const colors = [this.state.randomColorA, this.state.randomColorB];
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    console.log(randomColor);
+    console.log(this.state.boxColor);
     const { text } = this.props;
     return (
       <div>
