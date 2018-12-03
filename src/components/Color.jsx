@@ -53,7 +53,7 @@ export default class Color extends Component {
         <div
           style={{
             height: 300,
-            width: 300,
+            width: 500,
             backgroundColor: this.state.boxColor,
             border: "2px solid #fff",
             overflow: "hidden"
